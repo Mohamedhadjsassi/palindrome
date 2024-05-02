@@ -1,0 +1,32 @@
+algorithm checkpointPalindrome
+
+VAR
+  word: string
+  result: boolean
+
+BEGIN
+  // Function to check if the word is a palindrome
+  FUNCTION isPalindrome(word: string): boolean
+    IF (word.length <= 1) THEN
+      RETURN true // Base case: a word with 0 or 1 character is always a palindrome
+    ELSE
+      IF (word[0] === word[word.length - 1]) THEN
+        // If the first and last characters are the same,
+        // recursively call isPalindrome with the substring excluding these characters
+        RETURN isPalindrome(word.substring(1, word.length - 1))
+      ELSE
+        RETURN false // If the first and last characters are different, it's not a palindrome
+      END IF
+    END IF
+  END FUNCTION
+
+  // Main program
+  // Initialize the word to check
+  word <- "radar"
+
+  // Call the isPalindrome function and store the result
+  result <- isPalindrome(word)
+
+  // Output the result
+  OUTPUT result
+END
